@@ -259,5 +259,5 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   https://img.shields.io/github/size/kivy-utilities/adaptive-grid-layout/__init__.py.svg?label=__init__.py
 
 [adaptive_grid_layout__master__source_code]:
-  https://github.com/kivy-utilities/adaptive-grid-layout/blob/master/adaptive-grid-layout.py
+  https://github.com/kivy-utilities/adaptive-grid-layout/blob/master/__init__.py
   "&#x2328; Project source code!"
