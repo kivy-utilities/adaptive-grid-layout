@@ -9,7 +9,7 @@ class Adaptive_GridLayout(GridLayout):
     """
     Adaptive height and row heights for grid layouts.
 
-    Note this should not be used as a root layout and '_refresh_grids_y_dimension()' method should be used by
+    Note this should not be used as a root layout and '_refresh_y_dimension()' method should be used by
     children widgets that change height to update all attached instances of Adaptive_GridLayout (this layout).
 
     Copyright AGPL-3.0 2019 S0AndS0
@@ -19,7 +19,7 @@ class Adaptive_GridLayout(GridLayout):
         super(Adaptive_GridLayout, self).__init__(**kwargs)
         self.grow_cols = grow_cols
         self.grow_rows = grow_rows
-        self.trigger_refresh_y_dimension = Clock.create_trigger(lambda _: self._refresh_grids_y_dimension(), 0)
+        self.trigger_refresh_y_dimension = Clock.create_trigger(lambda _: self._refresh_y_dimension(), 0)
 
     def _yield_tallest_of_each_row(self):
         """ Yields tallest child of each row within gridlayout. """
@@ -82,9 +82,9 @@ class Adaptive_GridLayout(GridLayout):
         """ Resets 'self.rows_minimum' using value returned by '_calc_rows_minimum' method. """
         self.rows_minimum = self._calc_rows_minimum()
 
-    def _refresh_grids_y_dimension(self):
+    def _refresh_y_dimension(self):
         """ Updates 'height' and 'rows_minimum' first for spawn, then for self, and finally for any progenitors. """
-        spawn = [x for x in self.walk(restrict = True) if hasattr(x, '_refresh_grids_y_dimension') and x is not self]
+        spawn = [x for x in self.walk(restrict = True) if hasattr(x, '_refresh_y_dimension') and x is not self]
         for item in spawn:
             item._refresh_rows_minimum()
             item._refresh_height()
@@ -92,7 +92,7 @@ class Adaptive_GridLayout(GridLayout):
         self._refresh_rows_minimum()
         self._refresh_height()
 
-        progenitors = [x for x in self.walk_reverse() if hasattr(x, '_refresh_grids_y_dimension') and x is not self]
+        progenitors = [x for x in self.walk_reverse() if hasattr(x, '_refresh_y_dimension') and x is not self]
         for progenitor in progenitors:
             progenitor._refresh_rows_minimum()
             progenitor._refresh_height()
