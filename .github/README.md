@@ -46,7 +46,7 @@ Kivy layout that adapts dimensions based off children elements.
 ```Bash
 _module_name='adaptive-grid-layout'
 _module_https_url="https://github.com/kivy-utilities/${_module_name}.git"
-_module_relative_path="lib/modules/${_module_name}"
+_module_relative_path="lib/modules/${_module_name//-/_}"
 ```
 
 
@@ -99,7 +99,7 @@ Incorporate the `adaptive-grid-layout.kv` file within some layout...
 
 
 ```Kivy
-#:include lib/adaptive-grid-layout/adaptive-grid-layout.kv
+#:include lib/modules/adaptive_grid_layout/adaptive-grid-layout.kv
 
 
 Some_Screen:
@@ -125,7 +125,7 @@ And/or import and utilize Python class directly...
 
 from kivy.uix.screenmanager import Screen
 
-from lib.modules.adaptive-grid-layout import Adaptive_GridLayout
+from lib.modules.adaptive_grid_layout import Adaptive_GridLayout
 
 
 class Some_Screen(Screen):
@@ -192,7 +192,17 @@ ___
 
 The `trigger_refresh_y_dimension()` method may be called to force an update of layout hight.
 
+
 Currently the `Adaptive_GridLayout` can handle layouts of one column wide, Pull Requests are welcome if an eloquent solution is found to handle multiple columns of differing heights.
+
+
+Python requires a `__init__.py` within each directory that may be imported...
+
+
+```Bash
+touch lib/__init__.py
+touch lib/modules/__init__.py
+```
 
 
 ___
