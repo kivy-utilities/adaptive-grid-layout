@@ -99,15 +99,20 @@ class Adaptive_GridLayout(GridLayout):
 
     def on_children(self, instance, value):
         """ If 'grow_cols' or 'grow_rows' is True this will grow layout that way if needed instead of erroring out. """
-        smax = self.get_max_widgets()
+        if not self.rows or not self.cols:
+            return super(Adaptive_GridLayout, self).on_children(instance, value)
+
+        max_widgets = self.rows * self.cols
         widget_count = len(value)
-        if smax and widget_count > smax:
-            increase_by = widget_count - smax
-            if self.grow_cols is True:
-                self.cols += increase_by
-            elif self.grow_rows is True:
-                self.rows += increase_by
-        super(Adaptive_GridLayout, self).on_children(instance, value)
+
+        differance = widget_count - max_widgets
+        if widget_count > max_widgets:
+            if self.grow_cols:
+                self.cols += differance
+            elif self.grow_rows:
+                self.rows += differance
+
+        return super(Adaptive_GridLayout, self).on_children(instance, value)
 
     def on_parent(self, instance, value):
         """ Some adjustments maybe needed to get top row behaving on all platforms. """
