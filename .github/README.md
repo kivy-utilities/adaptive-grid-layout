@@ -193,7 +193,7 @@ ___
 The `trigger_refresh_y_dimension()` method may be called to force an update of layout hight.
 
 
-Currently the `Adaptive_GridLayout` can handle layouts of one column wide, Pull Requests are welcome if an eloquent solution is found to handle multiple columns of differing heights.
+Set both `rows` and `cols` to enable `grow_cols` or `grow_rows` within `on_children` method
 
 
 Python requires a `__init__.py` within each directory that may be imported...
