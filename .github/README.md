@@ -110,6 +110,7 @@ Some_Screen:
     Adaptive_GridLayout:
       cols: 1
       id: Some_GridLayout
+      size_hint_y: None
 ```
 
 
@@ -136,7 +137,7 @@ class Some_Screen(Screen):
     if clear:
       parent.clear_widgets(children = parent.children)
 
-    new_grid = Adaptive_GridLayout(cols = 1, id = grid_id, grow_rows = True)
+    new_grid = Adaptive_GridLayout(cols = 1, id = grid_id, grow_rows = True, size_hint_y = None)
     return parent.add_widget(new_grid)
 ```
 
@@ -191,6 +192,7 @@ ___
 
 
 To ensure that Kivy honors `height` and/or `width` set `size_hint_y` and/or `size_hint_x` for each element within layout.
+
 
 The `trigger_refresh_y_dimension()` method may be called to force an update of layout hight.
 
