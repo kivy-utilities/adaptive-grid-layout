@@ -190,10 +190,12 @@ ___
   "&#x1F5D2; Additional resources and things to keep in mind when developing"
 
 
+To ensure that Kivy honors `height` and/or `width` set `size_hint_y` and/or `size_hint_x` for each element within layout.
+
 The `trigger_refresh_y_dimension()` method may be called to force an update of layout hight.
 
 
-Set both `rows` and `cols` to enable `grow_cols` or `grow_rows` within `on_children` method
+Set both `rows` and `cols` to enable `grow_cols` or `grow_rows` within `on_children` method.
 
 
 Python requires a `__init__.py` within each directory that may be imported...
